@@ -1,0 +1,17 @@
+1. Installation:
+npm install parcel@next --save-dev
+
+2. Then you have to add this piece of code below "main": "app.js", in package.json as shown below, so parcel doesn't bundle into your app.js file.
+
+"main": "app.js",
+"targets": {
+  "main": false
+},
+
+3. Next you need to put the command in scripts part of package.json
+
+"build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled"
+
+4. Now your script bundled script will have a path ./public/js/bundled/bundle.js, so you need to this line to base.pug:
+
+script(src='/js/bundled/index.js')
